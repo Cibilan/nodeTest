@@ -1,0 +1,17 @@
+version: '2'
+networks:
+  net_basic:
+services:
+  node_service:
+    image: node:8.10.0
+    working_dir: /apps
+    command:  bash -c "mkdir -p /apps && npm install && node server.js"
+    container_name: node
+    expose: 
+        - "3000"
+    ports:
+        - "3000:3000"
+    volumes :
+        - ./:/apps
+    networks:
+        - net_basic
